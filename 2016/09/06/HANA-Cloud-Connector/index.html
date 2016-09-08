@@ -11,11 +11,11 @@
     <meta name="description" content="In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platfor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HANA Cloud Connector">
-<meta property="og:url" content="http://localhost:4000/2016/09/06/HANA-Cloud-Connector/index.html">
+<meta property="og:url" content="https://briani99.github.io/ui5/2016/09/06/HANA-Cloud-Connector/index.html">
 <meta property="og:site_name" content="ui5guru">
 <meta property="og:description" content="In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platfor">
 <meta property="og:image" content="http://localhost:4000/css/images/cloudicon.jpg">
-<meta property="og:updated_time" content="2016-09-06T11:11:54.262Z">
+<meta property="og:updated_time" content="2016-09-06T11:11:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HANA Cloud Connector">
 <meta name="twitter:description" content="In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platfor">
@@ -28,16 +28,16 @@
 
     
 
-    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
-    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+    <link rel="stylesheet" href="/ui5/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ui5/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/ui5/vendor/source-code-pro/styles.css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/ui5/css/style.css">
 
-    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/ui5/vendor/jquery/2.0.3/jquery.min.js"></script>
     
     
-        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+        <link rel="stylesheet" href="/ui5/vendor/lightgallery/css/lightgallery.min.css">
     
     
     
@@ -52,7 +52,7 @@
             <div class="container-inner">
                 <div id="header-title">
                     <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
+                        <a href="/ui5/" class="logo"></a>
                     </h1>
                     
                         <h2 class="subtitle-wrap">
@@ -66,13 +66,13 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Home</a>
+                                    <a class="main-nav-list-link" href="/ui5/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/HCP/">HCP</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/ui5/categories/HCP/">HCP</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                    <a class="main-nav-list-link" href="/ui5/about/index.html">About</a>
                                 </li>
                             
                         </ul>
@@ -105,13 +105,13 @@
             TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
+        ROOT_URL: '/ui5/',
+        CONTENT_URL: '/ui5/content.json',
     };
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
-<script src="/js/insight.js"></script>
+<script src="/ui5/js/insight.js"></script>
 
 </div>
                         </nav>
@@ -128,7 +128,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/HCP/">HCP</a>
+    <a class="page-title-link" href="/ui5/categories/HCP/">HCP</a>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -147,11 +147,11 @@
         
         
             <div class="article-subtitle">
-                <a href="/2016/09/06/HANA-Cloud-Connector/" class="article-date">
+                <a href="/ui5/2016/09/06/HANA-Cloud-Connector/" class="article-date">
     <time datetime="2016-09-06T14:16:00.000Z" itemprop="datePublished">2016-09-06</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HCP-Cloud-Connector-OData/">HCP, Cloud Connector, OData</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/ui5/tags/HCP-Cloud-Connector-OData/">HCP, Cloud Connector, OData</a></li></ul>
 
             </div>
         
@@ -164,7 +164,7 @@
 <p>In the unlikely event that you don’t have a JVM on your machine you can get a corresponding one here aswell.</p>
 <p><img src="/2016/09/06/HANA-Cloud-Connector/HANATools.png" alt="HANA Tools"> </p>
 <p>You have some choices here, the developer version or the msi.  On windows if you install the msi, the difference is that it will create a service and this will be automatically turned on at startup in future, so if this is a test setup you can deactivate this default configuration in the services.msc to free up some of your resources.</p>
-<p>Once installed you can access the HANA Cloud connector at the <a href="https://localhost:8443">https://localhost:8443</a> (if you didnt change the port during install).  You will probably get some security warnings from your browser also as the certificate of this is self-signed, just accept the exception and continue.  Once the logon screen appears you can logon with the default user and password (Administrator/manage) and it will guide you to connect to your HANA Cloud Platform Account.  If you have problems you can check the help for the HANA Cloud Connector.</p>
+<p>Once installed you can access the HANA Cloud connector at the <a href="https://localhost:8443" target="_blank" rel="external">https://localhost:8443</a> (if you didnt change the port during install).  You will probably get some security warnings from your browser also as the certificate of this is self-signed, just accept the exception and continue.  Once the logon screen appears you can logon with the default user and password (Administrator/manage) and it will guide you to connect to your HANA Cloud Platform Account.  If you have problems you can check the help for the HANA Cloud Connector.</p>
 <p>Now I have my Connector ready and connected to my HCP.  The Cloud Connector also in on the same network as my local HANA system so I get started.</p>
 <h6 id="HANA-Cloud-Connector-Configuration"><a href="#HANA-Cloud-Connector-Configuration" class="headerlink" title="HANA Cloud Connector Configuration"></a>HANA Cloud Connector Configuration</h6><p>First lets look at the OData Service url of the HANA system I am exposing.</p>
 <p><img src="/2016/09/06/HANA-Cloud-Connector/ODataService.png" alt="OData Service"> </p>
@@ -207,7 +207,7 @@
 
 
 
-    <a data-url="http://localhost:4000/2016/09/06/HANA-Cloud-Connector/" data-id="cisrbq8wm0002zwmo2rjlwuj9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://briani99.github.io/ui5/ui5/2016/09/06/HANA-Cloud-Connector/" data-id="cisug8j5e0002no2ag8162lse" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -315,7 +315,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                    <a class="social-tooltip" title="rss" href="/ui5/atom.xml" target="_blank">
                         <i class="icon fa fa-rss"></i>
                     </a>
                 </li>
@@ -338,7 +338,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/09/06/HANA-Cloud-Connector/" class="thumbnail">
+                            <a href="/ui5/2016/09/06/HANA-Cloud-Connector/" class="thumbnail">
     
     
         <span style="background-image:url(http://localhost:4000/css/images/cloudicon.jpg)" alt="HANA Cloud Connector" class="thumbnail-image"></span>
@@ -349,8 +349,8 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/HCP/">HCP</a></p>
-                            <p class="item-title"><a href="/2016/09/06/HANA-Cloud-Connector/" class="title">HANA Cloud Connector</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/ui5/categories/HCP/">HCP</a></p>
+                            <p class="item-title"><a href="/ui5/2016/09/06/HANA-Cloud-Connector/" class="title">HANA Cloud Connector</a></p>
                             <p class="item-date"><time datetime="2016-09-06T14:16:00.000Z" itemprop="datePublished">2016-09-06</time></p>
                         </div>
                     </li>
@@ -364,7 +364,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HCP/">HCP</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/ui5/categories/HCP/">HCP</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -374,7 +374,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/ui5/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -384,7 +384,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCP-Cloud-Connector-OData/">HCP, Cloud Connector, OData</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/ui5/tags/HCP-Cloud-Connector-OData/">HCP, Cloud Connector, OData</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -394,7 +394,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/HCP-Cloud-Connector-OData/" style="font-size: 10px;">HCP, Cloud Connector, OData</a>
+            <a href="/ui5/tags/HCP-Cloud-Connector-OData/" style="font-size: 10px;">HCP, Cloud Connector, OData</a>
         </div>
     </div>
 
@@ -428,7 +428,7 @@
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
+                    <a href="/ui5/" class="logo"></a>
                 </h1>
                 <p>&copy; 2016 Brian Keenan</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
@@ -442,7 +442,7 @@
     var disqus_shortname = 'ui5guru';
     
     
-    var disqus_url = 'http://localhost:4000/2016/09/06/HANA-Cloud-Connector/';
+    var disqus_url = 'https://briani99.github.io/ui5/ui5/2016/09/06/HANA-Cloud-Connector/';
     
     (function() {
     var dsq = document.createElement('script');
@@ -456,20 +456,20 @@
 
 
     
-        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
-        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/ui5/vendor/lightgallery/js/lg-video.min.js"></script>
     
 
 
 <!-- Custom Scripts -->
-<script src="/js/main.js"></script>
+<script src="/ui5/js/main.js"></script>
 
     </div>
 </body>
