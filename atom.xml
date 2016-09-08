@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>ui5guru</title>
   <subtitle>HANA Cloud Platform, SAPUI5 and Hana Native Development</subtitle>
-  <link href="/ui5/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="https://briani99.github.io/ui5/"/>
+  <link href="http://briankeenan.xyz/"/>
   <updated>2016-09-06T11:11:56.000Z</updated>
-  <id>https://briani99.github.io/ui5/</id>
+  <id>http://briankeenan.xyz/</id>
   
   <author>
     <name>Brian Keenan</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>HANA Cloud Connector</title>
-    <link href="https://briani99.github.io/ui5/2016/09/06/HANA-Cloud-Connector/"/>
-    <id>https://briani99.github.io/ui5/2016/09/06/HANA-Cloud-Connector/</id>
+    <link href="http://briankeenan.xyz/2016/09/06/HANA-Cloud-Connector/"/>
+    <id>http://briankeenan.xyz/2016/09/06/HANA-Cloud-Connector/</id>
     <published>2016-09-06T14:16:00.000Z</published>
     <updated>2016-09-06T11:11:56.000Z</updated>
     
@@ -73,10 +73,10 @@
     
     </summary>
     
-      <category term="HCP" scheme="https://briani99.github.io/ui5/categories/HCP/"/>
+      <category term="HCP" scheme="http://briankeenan.xyz/categories/HCP/"/>
     
     
-      <category term="HCP, Cloud Connector, OData" scheme="https://briani99.github.io/ui5/tags/HCP-Cloud-Connector-OData/"/>
+      <category term="HCP, Cloud Connector, OData" scheme="http://briankeenan.xyz/tags/HCP-Cloud-Connector-OData/"/>
     
   </entry>
   

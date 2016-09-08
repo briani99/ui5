@@ -2127,3 +2127,7 @@ i.icon:before {
     text-align: center;
   }
 }
+.logo-text {
+  color: #afcfe0;
+  font-size: 300%;
+}
