@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>HANA Cloud Connector | ui5guru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="HCP, Cloud Connector, OData" />
+    
+    <meta name="description" content="In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platfor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HANA Cloud Connector">
+<meta property="og:url" content="http://localhost:4000/2016/09/06/HANA-Cloud-Connector/index.html">
+<meta property="og:site_name" content="ui5guru">
+<meta property="og:description" content="In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platfor">
+<meta property="og:image" content="http://localhost:4000/css/images/cloudicon.jpg">
+<meta property="og:updated_time" content="2016-09-06T11:11:54.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HANA Cloud Connector">
+<meta name="twitter:description" content="In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platfor">
+<meta name="twitter:image" content="http://localhost:4000/css/images/cloudicon.jpg">
+    
+
+    
+        <link rel="alternate" href="atom.xml" title="ui5guru" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">HANA Cloud Platform, SAPUI5 and Hana Native Development</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/HCP/">HCP</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/HCP/">HCP</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-HANA-Cloud-Connector" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        HANA Cloud Connector
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2016/09/06/HANA-Cloud-Connector/" class="article-date">
+    <time datetime="2016-09-06T14:16:00.000Z" itemprop="datePublished">2016-09-06</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HCP-Cloud-Connector-OData/">HCP, Cloud Connector, OData</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platform.</p>
+<p>The first step is to download the HANA Cloud Connector software.</p>
+<h6 id="System-Preparation"><a href="#System-Preparation" class="headerlink" title="System Preparation"></a>System Preparation</h6><p>You can download this from the HANA Tools at the link below,</p>
+<p><a href="https://tools.hana.ondemand.com/#cloud" target="_blank" rel="external">https://tools.hana.ondemand.com/#cloud</a></p>
+<p>In the unlikely event that you don’t have a JVM on your machine you can get a corresponding one here aswell.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/HANATools.png" alt="HANA Tools"> </p>
+<p>You have some choices here, the developer version or the msi.  On windows if you install the msi, the difference is that it will create a service and this will be automatically turned on at startup in future, so if this is a test setup you can deactivate this default configuration in the services.msc to free up some of your resources.</p>
+<p>Once installed you can access the HANA Cloud connector at the <a href="https://localhost:8443">https://localhost:8443</a> (if you didnt change the port during install).  You will probably get some security warnings from your browser also as the certificate of this is self-signed, just accept the exception and continue.  Once the logon screen appears you can logon with the default user and password (Administrator/manage) and it will guide you to connect to your HANA Cloud Platform Account.  If you have problems you can check the help for the HANA Cloud Connector.</p>
+<p>Now I have my Connector ready and connected to my HCP.  The Cloud Connector also in on the same network as my local HANA system so I get started.</p>
+<h6 id="HANA-Cloud-Connector-Configuration"><a href="#HANA-Cloud-Connector-Configuration" class="headerlink" title="HANA Cloud Connector Configuration"></a>HANA Cloud Connector Configuration</h6><p>First lets look at the OData Service url of the HANA system I am exposing.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/ODataService.png" alt="OData Service"> </p>
+<p>In the Cloud Connector we must now go to the Access Control and create a mapping of the Read url to a virtual one.  We can see the host in purple and the Path in Red.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/access_control.png" alt="Mapping"> </p>
+<p>The Internal Host and URL Path can be taken from the url and they are marked in Purple and Blue respectively.  For the virtual host which is highlighed in Red, you can enter any host and port you want, This will be used later in the HANA Cloud Platform.</p>
+<p>We are now finished with the local configuration and now we can go to the HANA Clould Platform.</p>
+<h6 id="HANA-Cloud-Platform-Configuration"><a href="#HANA-Cloud-Platform-Configuration" class="headerlink" title="HANA Cloud Platform Configuration"></a>HANA Cloud Platform Configuration</h6><p>If we first look in the Cloud Connectors section of our account we can see that our application is exposed and the exposed backend url is the same as the virtual host we gave above.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/CloudConnector.png" alt="HCP Cloud Connectors"> </p>
+<p>But this is still not enough to use in an application.  Our applications need to consume Destinations so we will need to create one.  In the same Connectivity Section we have the Destinations option.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/Destinations.png" alt="Destinations"> </p>
+<p>Again here the exposed url is mark in Red and as we have choosed earlier.   You also need to add the 3 additional parameters,</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WebIDEEnabled</td>
+<td>true</td>
+</tr>
+<tr>
+<td>WebIDEUsage</td>
+<td>odata_xs,odata_gen</td>
+</tr>
+<tr>
+<td>WebIDESystem</td>
+<td>“Set this to the destination name”</td>
+</tr>
+</tbody>
+</table>
+<p>Now you application can be consumed like you would any other destination in the HANA Cloud Platform.  We will consume this in the next section.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://localhost:4000/2016/09/06/HANA-Cloud-Connector/" data-id="cisrbq8wm0002zwmo2rjlwuj9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/briankeenansap" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/briani99" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/brian-keenan-65b15379" target="_blank">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/06/HANA-Cloud-Connector/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://localhost:4000/css/images/cloudicon.jpg)" alt="HANA Cloud Connector" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/HCP/">HCP</a></p>
+                            <p class="item-title"><a href="/2016/09/06/HANA-Cloud-Connector/" class="title">HANA Cloud Connector</a></p>
+                            <p class="item-date"><time datetime="2016-09-06T14:16:00.000Z" itemprop="datePublished">2016-09-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HCP/">HCP</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCP-Cloud-Connector-OData/">HCP, Cloud Connector, OData</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/HCP-Cloud-Connector-OData/" style="font-size: 10px;">HCP, Cloud Connector, OData</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 Brian Keenan</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'ui5guru';
+    
+    
+    var disqus_url = 'http://localhost:4000/2016/09/06/HANA-Cloud-Connector/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

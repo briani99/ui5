@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ui5guru</title>
+  <subtitle>HANA Cloud Platform, SAPUI5 and Hana Native Development</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://localhost:4000/"/>
+  <updated>2016-09-06T11:11:54.262Z</updated>
+  <id>http://localhost:4000/</id>
+  
+  <author>
+    <name>Brian Keenan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HANA Cloud Connector</title>
+    <link href="http://localhost:4000/2016/09/06/HANA-Cloud-Connector/"/>
+    <id>http://localhost:4000/2016/09/06/HANA-Cloud-Connector/</id>
+    <published>2016-09-06T14:16:00.000Z</published>
+    <updated>2016-09-06T11:11:54.262Z</updated>
+    
+    <content type="html"><![CDATA[<p>In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData service.  We will then consume this via the HANA Cloud Platform.</p>
+<p>The first step is to download the HANA Cloud Connector software.</p>
+<h6 id="System-Preparation"><a href="#System-Preparation" class="headerlink" title="System Preparation"></a>System Preparation</h6><p>You can download this from the HANA Tools at the link below,</p>
+<p><a href="https://tools.hana.ondemand.com/#cloud" target="_blank" rel="external">https://tools.hana.ondemand.com/#cloud</a></p>
+<p>In the unlikely event that you don’t have a JVM on your machine you can get a corresponding one here aswell.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/HANATools.png" alt="HANA Tools"> </p>
+<p>You have some choices here, the developer version or the msi.  On windows if you install the msi, the difference is that it will create a service and this will be automatically turned on at startup in future, so if this is a test setup you can deactivate this default configuration in the services.msc to free up some of your resources.</p>
+<p>Once installed you can access the HANA Cloud connector at the <a href="https://localhost:8443">https://localhost:8443</a> (if you didnt change the port during install).  You will probably get some security warnings from your browser also as the certificate of this is self-signed, just accept the exception and continue.  Once the logon screen appears you can logon with the default user and password (Administrator/manage) and it will guide you to connect to your HANA Cloud Platform Account.  If you have problems you can check the help for the HANA Cloud Connector.</p>
+<p>Now I have my Connector ready and connected to my HCP.  The Cloud Connector also in on the same network as my local HANA system so I get started.</p>
+<h6 id="HANA-Cloud-Connector-Configuration"><a href="#HANA-Cloud-Connector-Configuration" class="headerlink" title="HANA Cloud Connector Configuration"></a>HANA Cloud Connector Configuration</h6><p>First lets look at the OData Service url of the HANA system I am exposing.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/ODataService.png" alt="OData Service"> </p>
+<p>In the Cloud Connector we must now go to the Access Control and create a mapping of the Read url to a virtual one.  We can see the host in purple and the Path in Red.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/access_control.png" alt="Mapping"> </p>
+<p>The Internal Host and URL Path can be taken from the url and they are marked in Purple and Blue respectively.  For the virtual host which is highlighed in Red, you can enter any host and port you want, This will be used later in the HANA Cloud Platform.</p>
+<p>We are now finished with the local configuration and now we can go to the HANA Clould Platform.</p>
+<h6 id="HANA-Cloud-Platform-Configuration"><a href="#HANA-Cloud-Platform-Configuration" class="headerlink" title="HANA Cloud Platform Configuration"></a>HANA Cloud Platform Configuration</h6><p>If we first look in the Cloud Connectors section of our account we can see that our application is exposed and the exposed backend url is the same as the virtual host we gave above.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/CloudConnector.png" alt="HCP Cloud Connectors"> </p>
+<p>But this is still not enough to use in an application.  Our applications need to consume Destinations so we will need to create one.  In the same Connectivity Section we have the Destinations option.</p>
+<p><img src="/2016/09/06/HANA-Cloud-Connector/Destinations.png" alt="Destinations"> </p>
+<p>Again here the exposed url is mark in Red and as we have choosed earlier.   You also need to add the 3 additional parameters,</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WebIDEEnabled</td>
+<td>true</td>
+</tr>
+<tr>
+<td>WebIDEUsage</td>
+<td>odata_xs,odata_gen</td>
+</tr>
+<tr>
+<td>WebIDESystem</td>
+<td>“Set this to the destination name”</td>
+</tr>
+</tbody>
+</table>
+<p>Now you application can be consumed like you would any other destination in the HANA Cloud Platform.  We will consume this in the next section.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;In this blog we will configure the HANA cloud connector to deliver data between a HANA native application which exposes data via an OData
+    
+    </summary>
+    
+      <category term="HCP" scheme="http://localhost:4000/categories/HCP/"/>
+    
+    
+      <category term="HCP, Cloud Connector, OData" scheme="http://localhost:4000/tags/HCP-Cloud-Connector-OData/"/>
+    
+  </entry>
+  
+</feed>
