@@ -2145,6 +2145,7 @@ i.icon:before {
 }
 .centericons {
   margin: 50px;
+  text-align: center;
   -webkit-box-align: center;
   -moz-box-align: center;
   -ms-flex-align: center;
